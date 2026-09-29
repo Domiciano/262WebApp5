@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CourseServiceImpl implements CourseService {
@@ -59,6 +60,17 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public List<Course> getAll() {
         return courseRepository.findAll();
+    }
+
+
+    @Override
+    public Course getById(Integer id) {
+        Optional<Course> course = courseRepository.findById(id);
+        if(course.isPresent()) {
+            return course.get();
+        }else{
+            throw new RuntimeException("Course with id " + id + " does not exist");
+        }
     }
 
 }

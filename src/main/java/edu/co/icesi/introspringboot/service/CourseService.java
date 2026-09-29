@@ -14,4 +14,6 @@ public interface CourseService {
     Course createCourse(Course course);
 
     List<Course> getAll();
+
+    Course getById(Integer id);
 }
