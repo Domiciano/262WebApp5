@@ -11,8 +11,4 @@ public class IntroSpringBootApplication {
         SpringApplication.run(IntroSpringBootApplication.class, args);
     }
 
-    @PostConstruct
-    public void init() {
-        System.out.println(">>>>>Inició la app");
-    }
 }
