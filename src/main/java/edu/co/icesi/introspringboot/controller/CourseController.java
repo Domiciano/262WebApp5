@@ -2,14 +2,13 @@ package edu.co.icesi.introspringboot.controller;
 
 
 import edu.co.icesi.introspringboot.entity.Course;
+import edu.co.icesi.introspringboot.entity.Professor;
 import edu.co.icesi.introspringboot.service.CourseService;
+import edu.co.icesi.introspringboot.service.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,8 +17,13 @@ import java.util.List;
 @RequestMapping("/course")
 public class CourseController {
 
+
+
     @Autowired
     private CourseService courseService;
+
+    @Autowired
+    private ProfessorService professorService;
 
     @GetMapping("/")
     public String index(Model model) {
@@ -58,6 +62,29 @@ public class CourseController {
                 course
         );
         return "course/detail";
+    }
+
+    //Creando un curso
+
+    //1. Crear el GET del formulario
+    @GetMapping("/new")
+    public String createCourse(Model model) {
+
+        model.addAttribute(
+                "course",
+                new Course());
+
+        model.addAttribute(
+                "professors",
+                    professorService.getAll()
+                );
+        return "course/new";
+    }
+
+    @PostMapping("/save")
+    public String saveCourse(@ModelAttribute Course course) {
+        courseService.createCourse(course);
+        return "redirect:/course/";
     }
 
 

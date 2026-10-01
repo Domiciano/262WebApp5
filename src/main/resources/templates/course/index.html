@@ -12,7 +12,11 @@
 
     <ul>
         <li th:each="course : ${courseList}">
-            <h4 th:text="${course.name}"></h4>
+            <h4>
+                <a th:href="@{/course/detail/{id}(id=${course.id})}">
+                    <span th:text="${course.name}"/>
+                </a>
+            </h4>
             <small th:text="${course.professor.name}"></small>
         </li>
     </ul>
