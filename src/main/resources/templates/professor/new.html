@@ -11,8 +11,8 @@
 <h1>Crear profesor</h1>
 
 <form th:object="${professor}"
-      method="get"
-      action="/professor/save">
+      method="post"
+      th:action="@{/professor/save}">
     <input
             type="text"
             placeholder="Nombre del profesor"
@@ -20,6 +20,7 @@
             required>
     <button>Crear</button>
 </form>
+<h5 th:text="${message}"></h5>
 
 </body>
 </html>

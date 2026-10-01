@@ -25,4 +25,9 @@ public class ProfessorServiceImpl implements ProfessorService {
         } else throw new RuntimeException("Professor with id " + id + " not found");
 
     }
+
+    @Override
+    public void save(Professor professor) {
+        professorRepository.save(professor);
+    }
 }

@@ -6,10 +6,7 @@ import edu.co.icesi.introspringboot.service.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/professor")
@@ -19,7 +16,14 @@ public class ProfessorController {
     private ProfessorService professorService;
 
     @GetMapping("/new")
-    public String newProfessor(Model model) {
+    public String newProfessor(Model model,
+                               @RequestParam(required = false) String status) {
+        if(status != null) {
+            if(status.equals("success")) {
+                model.addAttribute("message",
+                        "Professor successfully saved");
+            }
+        }
         model.addAttribute(
                 "professor",
                 new Professor ()
@@ -27,9 +31,10 @@ public class ProfessorController {
         return "professor/new";
     }
 
-    @PostMapping
-    public String createProfessor(){
-        return "redirect:/professor/new";
+    @PostMapping("/save")
+    public String createProfessor(@ModelAttribute Professor professor) {
+        professorService.save(professor);
+        return "redirect:/professor/new?status=success ";
     }
 
 }
