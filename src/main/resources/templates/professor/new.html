@@ -10,10 +10,13 @@
 <body>
 <h1>Crear profesor</h1>
 
-<form th:object="${professor}">
+<form th:object="${professor}"
+      method="get"
+      action="/professor/save">
     <input
             type="text"
             placeholder="Nombre del profesor"
+            th:field="*{name}"
             required>
     <button>Crear</button>
 </form>
