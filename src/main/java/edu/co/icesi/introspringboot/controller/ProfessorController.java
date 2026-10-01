@@ -21,7 +21,7 @@ public class ProfessorController {
     public String newProfessor(Model model) {
         model.addAttribute(
                 "professor",
-                new Professor()
+                new Professor ()
         );
         return "professor/new";
     }
