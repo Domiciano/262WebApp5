@@ -1,23 +1,24 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cursos del sistema</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
 </head>
-<body>
-    <h1 th:text="${title}">...</h1>
+<body class="page courses-page">
+    <h1 class="page-title" th:text="${title}">...</h1>
 
-    <ul>
-        <li th:each="course : ${courseList}">
-            <h4>
-                <a th:href="@{/course/detail/{id}(id=${course.id})}">
+    <ul id="course-list" class="course-grid">
+        <li class="course-card" th:each="course : ${courseList}">
+            <h4 class="course-card-title">
+                <a class="course-link" th:href="@{/course/detail/{id}(id=${course.id})}">
                     <span th:text="${course.name}"/>
                 </a>
             </h4>
-            <small th:text="${course.professor.name}"></small>
+            <small class="course-professor" th:text="${course.professor.name}"></small>
         </li>
     </ul>
 
