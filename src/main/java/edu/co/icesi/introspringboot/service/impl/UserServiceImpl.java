@@ -19,6 +19,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRoleRepository userRoleRepository;
 
+
     @Override
     public List<User> findAll() {
         return userRepository.findAll();
@@ -40,5 +41,12 @@ public class UserServiceImpl implements UserService {
     public void deleteById(Integer id) {
         userRepository.deleteById(id);
         userRoleRepository.deleteByUser_Id(id);
+    }
+
+    @Override
+    public User findByUsername(String username) {
+        Optional<User> foundUser = userRepository.findByUsername(username);
+        return foundUser.orElseThrow( ()-> new RuntimeException("User not found!") );
+
     }
 }

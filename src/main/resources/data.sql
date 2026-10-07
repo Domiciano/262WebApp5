@@ -81,11 +81,11 @@ INSERT INTO role_permission (role_id, permission_id) VALUES (2, 11); -- UPDATE_E
 INSERT INTO role_permission (role_id, permission_id) VALUES (2, 12); -- DELETE_ENROLLMENT
 
 -- ─── USUARIOS (contraseña en texto plano solo para pruebas) ──────────────────
-INSERT INTO app_user (username, password) VALUES ('carlos',  '{noop}admin123');    -- 1
-INSERT INTO app_user (username, password) VALUES ('maria',   '{noop}admin123');    -- 2
-INSERT INTO app_user (username, password) VALUES ('ana',     '{noop}dir123');      -- 3
-INSERT INTO app_user (username, password) VALUES ('juan',    '{noop}dir123');      -- 4
-INSERT INTO app_user (username, password) VALUES ('sofia',   '{noop}dir123');      -- 5
+INSERT INTO app_user (username, password) VALUES ('nicolas',  '$2a$12$LE5wWF2zJKLfE98E4KgJPO.buVfS0xHlSg2F2ciQMnk5kdgEBx506');    -- 1
+INSERT INTO app_user (username, password) VALUES ('juanchoking',   '$2a$12$LE5wWF2zJKLfE98E4KgJPO.buVfS0xHlSg2F2ciQMnk5kdgEBx506');    -- 2
+INSERT INTO app_user (username, password) VALUES ('barragan',     '$2a$12$LE5wWF2zJKLfE98E4KgJPO.buVfS0xHlSg2F2ciQMnk5kdgEBx506');      -- 3
+INSERT INTO app_user (username, password) VALUES ('granda',    '$2a$12$LE5wWF2zJKLfE98E4KgJPO.buVfS0xHlSg2F2ciQMnk5kdgEBx506');      -- 4
+INSERT INTO app_user (username, password) VALUES ('martinez',   '$2a$12$LE5wWF2zJKLfE98E4KgJPO.buVfS0xHlSg2F2ciQMnk5kdgEBx506');      -- 5
 
 -- ─── ASIGNACIÓN DE ROLES ─────────────────────────────────────────────────────
 INSERT INTO user_role (user_id, role_id) VALUES (1, 1); -- carlos  → ADMIN
